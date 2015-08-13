@@ -27,14 +27,15 @@ ppm = 47.157898         # Pixels per micron
 
 # For magnification: 3.5kX
 
-dim = 80               # Dimensions of scan window in um
-stepX = 10               # Distance between two columns in um
-stepY = 10               # Distance between two rows in um
+dimX = 85               # Dimensions of scan window in x-dirn in um
+dimY = 75               # Dimensions of scan window in x-dirn in um
+stepX = 10              # Distance between two columns in um
+stepY = 10              # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
 c = canvas.canvas()
-c.stroke(path.rect(-dim/2.0,-dim/2.0,dim,dim))
+c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))
 i = 0
 text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)
 for row in range(0,rows):
