@@ -1,7 +1,9 @@
 from pyx import *
+import datetime
 print 'Welcome to FEI Strata DB235 FIB Patterning software'
 print '---------------------------------------------------'
 print 'This software creates an array pattern.'
+print '---------------------------------------------------'
 
 rows = input('Enter number of rows: ')
 cols = input('Enter number of columns: ')
@@ -17,7 +19,7 @@ matFile = 'C:\\xP\Pattern\si.mtr'
 depth = 0.100000
 dwell = 0.000001000     # in secs
 overlap = 50.000000
-time = 5                # in secs
+time = 7.000000         # in secs
 gis = 0
 epd = 0
 rot = 0.000000
@@ -26,8 +28,8 @@ ppm = 47.157898         # Pixels per micron
 # For magnification: 3.5kX
 
 dim = 100               # Dimensions of scan window in um
-stepX = 3               # Distance between two columns in um
-stepY = 3               # Distance between two rows in um
+stepX = 10               # Distance between two columns in um
+stepY = 10               # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
@@ -63,6 +65,8 @@ for row in range(0,rows):
         c.fill(path.circle(x, y, rin))
         #print x,',',y
 
+print '---------------------------------------------------'
+print 'Total time required = '+str(datetime.timedelta(seconds=time*nos))
 c.writeEPSfile("path")
 c.writePDFfile("path")
 file = open('output.pat', 'w')
