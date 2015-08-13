@@ -28,23 +28,26 @@ ppm = 47.157898         # Pixels per micron
 # For magnification: 3.5kX
 
 dimX = 85               # Dimensions of scan window in x-dirn in um
-dimY = 75               # Dimensions of scan window in x-dirn in um
-stepX = 10              # Distance between two columns in um
-stepY = 10              # Distance between two rows in um
+dimY = 75               # Dimensions of scan window in y-dirn in um
+borderX = 5.0             # Distance of array from x border in um
+borderY = 5.0             # Distance of array from y border in um
+stepX = (dimX-2*borderX)/(cols-1)   # Distance between two columns in um
+stepY = (dimY-2*borderY)/(rows-1)   # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
 c = canvas.canvas()
-c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))
+c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))  # scan window
+c.stroke(path.rect(-dimX/2.0+borderX,-dimY/2.0+borderY,dimX-borderX*2,dimY-borderY*2))  # border
 i = 0
 text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)
 for row in range(0,rows):
-    maxX = -(rows-1)*stepX/2.0
-    x = centerX + maxX + row*stepX
+    maxY = -(rows-1)*stepY/2.0
+    y = centerY + maxY + row*stepY
     for col in range(0,cols):
         i += 1
-        maxY = -(cols-1)*stepY/2.0
-        y = centerY + maxY + col*stepY
+        maxX = -(cols-1)*stepX/2.0
+        x = centerX + maxX + col*stepX
         text += '\n[Pattern_'+str(i)+']\n'
         text += 'Name='+name+'\n'
         text += 'InnerRadius='+str('{0:.6f}'.format(rin))+'\n'
