@@ -7,6 +7,8 @@ print '---------------------------------------------------'
 
 rows = input('Enter number of rows: ')
 cols = input('Enter number of columns: ')
+borderX = input('Enter border in x-direction in um: ')
+borderY = input('Enter border in y-direction in um: ')
 
 
 nos = rows*cols
@@ -29,13 +31,11 @@ ppm = 47.157898         # Pixels per micron
 
 dimX = 85               # Dimensions of scan window in x-dirn in um
 dimY = 75               # Dimensions of scan window in y-dirn in um
-borderX = 5.0           # Distance of array from x border in um
-borderY = 5.0           # Distance of array from y border in um
 stepX = stepY = 0
 if cols>1:
-    stepX = (dimX-2*borderX)/(cols-1)   # Distance between two columns in um
+    stepX = (dimX-2*borderX)*1.0/(cols-1)   # Distance between two columns in um
 if rows>1:
-    stepY = (dimY-2*borderY)/(rows-1)   # Distance between two rows in um
+    stepY = (dimY-2*borderY)*1.0/(rows-1)   # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
