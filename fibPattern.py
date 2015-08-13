@@ -38,19 +38,23 @@ for row in range(0,rows):
         y = centerY + maxY + col*stepY
         text += '[Pattern_'+str(row+col+1)+']\n'
         text += 'Name='+name+'\n'
-        text += 'InnerRadius='+str(rin)+'\n'
-        text += 'OuterRadius='+str(ro)+'\n'
-        text += 'CenterX='+str(x)+'\n'
-        text += 'CenterY='+str(y)+'\n'
+        text += 'InnerRadius='+str('{0:.6f}'.format(rin))+'\n'
+        text += 'OuterRadius='+str('{0:.6f}'.format(ro))+'\n'
+        text += 'CenterX='+str('{0:.6f}'.format(x))+'\n'
+        text += 'CenterY='+str('{0:.6f}'.format(y))+'\n'
         text += 'Type='+str(patType)+'\n'
         text += 'Beam='+str(beam)+'\n'
         text += 'MaterialFile='+matFile+'\n'
-        text += 'Depth='+str(depth)+'\n'
-        text += 'Dwell='+str(dwell)+'\n'
-        text += 'Overlap='+str(overlap)+'\n'
-        text += 'Time='+str(time)+'\n'
+        text += 'Depth='+str('{0:.6f}'.format(depth))+'\n'
+        text += 'Dwell='+str('{0:.9f}'.format(dwell))+'\n'
+        text += 'Overlap='+str('{0:.6f}'.format(overlap))+'\n'
+        text += 'Time='+str('{0:.6f}'.format(time))+'\n'
         text += 'GIS='+str(gis)+'\n'
         text += 'EPD='+str(epd)+'\n'
-        text += 'Rotation='+str(rot)+'\n'
-        text += 'PixelsPerMicron='+str(ppm)+'\n'
-        print x,',',y
+        text += 'Rotation='+str('{0:.6f}'.format(rot))+'\n'
+        text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))+'\n'
+        #print x,',',y
+
+file = open('test.pat', 'w')
+file.write(text)
+file.close()
