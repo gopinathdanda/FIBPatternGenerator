@@ -29,14 +29,16 @@ stepY = 3               # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
-text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)+'\n'
+i = 0
+text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)
 for row in range(0,rows):
     maxX = -(rows-1)*stepX/2.0
     x = centerX + maxX + row*stepX
     for col in range(0,cols):
+        i += 1
         maxY = -(cols-1)*stepY/2.0
         y = centerY + maxY + col*stepY
-        text += '[Pattern_'+str(row+col+1)+']\n'
+        text += '\n[Pattern_'+str(i)+']\n'
         text += 'Name='+name+'\n'
         text += 'InnerRadius='+str('{0:.6f}'.format(rin))+'\n'
         text += 'OuterRadius='+str('{0:.6f}'.format(ro))+'\n'
@@ -52,7 +54,7 @@ for row in range(0,rows):
         text += 'GIS='+str(gis)+'\n'
         text += 'EPD='+str(epd)+'\n'
         text += 'Rotation='+str('{0:.6f}'.format(rot))+'\n'
-        text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))+'\n'
+        text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))
         #print x,',',y
 
 file = open('test.pat', 'w')

@@ -35,7 +35,7 @@ GIS=0
 EPD=0
 Rotation=0.000000
 PixelsPerMicron=47.157898
-[Pattern_2]
+[Pattern_3]
 Name=Circle
 InnerRadius=0.000000
 OuterRadius=0.200000
@@ -52,7 +52,7 @@ GIS=0
 EPD=0
 Rotation=0.000000
 PixelsPerMicron=47.157898
-[Pattern_3]
+[Pattern_4]
 Name=Circle
 InnerRadius=0.000000
 OuterRadius=0.200000
@@ -69,7 +69,7 @@ GIS=0
 EPD=0
 Rotation=0.000000
 PixelsPerMicron=47.157898
-[Pattern_3]
+[Pattern_5]
 Name=Circle
 InnerRadius=0.000000
 OuterRadius=0.200000
@@ -86,7 +86,7 @@ GIS=0
 EPD=0
 Rotation=0.000000
 PixelsPerMicron=47.157898
-[Pattern_4]
+[Pattern_6]
 Name=Circle
 InnerRadius=0.000000
 OuterRadius=0.200000
