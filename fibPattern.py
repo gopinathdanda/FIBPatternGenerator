@@ -61,8 +61,8 @@ for row in range(0,rows):
         text += 'EPD='+str(epd)+'\n'
         text += 'Rotation='+str('{0:.6f}'.format(rot))+'\n'
         text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))
-        c.stroke(path.circle(x, y, ro))
-        c.fill(path.circle(x, y, rin))
+        c.fill(path.circle(x, y, ro), [color.rgb(0,0,0)])
+        c.fill(path.circle(x, y, rin), [color.rgb(1,1,1)])
         #print x,',',y
 
 print '---------------------------------------------------'
