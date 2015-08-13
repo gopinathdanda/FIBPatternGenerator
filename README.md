@@ -4,4 +4,4 @@ A simple array pattern generator for FEI Strata DB235 FIB.
 
 ## Dependencies
 
-1. [pyx](https://pypi.python.org/pypi/PyX)
+1. [pyx](https://pypi.python.org/pypi/PyX) - To create pattern graphics
