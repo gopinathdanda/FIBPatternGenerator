@@ -1,3 +1,4 @@
+from pyx import *
 print 'Welcome to FEI Strata DB235 FIB Patterning software'
 print '---------------------------------------------------'
 print 'This software creates an array pattern.'
@@ -5,10 +6,9 @@ print 'This software creates an array pattern.'
 rows = input('Enter number of rows: ')
 cols = input('Enter number of columns: ')
 
-# Circle pattern only for now
 
 nos = rows*cols
-name = 'Circle'
+name = 'Circle'         # Circle pattern only (for now)
 rin = 0.000000          # in um
 ro = 0.200000           # in um
 patType = 7
@@ -23,12 +23,16 @@ epd = 0
 rot = 0.000000
 ppm = 47.157898         # Pixels per micron
 
+# For magnification: 3.5kX
+
 dim = 100               # Dimensions of scan window in um
 stepX = 3               # Distance between two columns in um
 stepY = 3               # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
+c = canvas.canvas()
+c.stroke(path.rect(-dim/2.0,-dim/2.0,dim,dim))
 i = 0
 text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)
 for row in range(0,rows):
@@ -55,8 +59,12 @@ for row in range(0,rows):
         text += 'EPD='+str(epd)+'\n'
         text += 'Rotation='+str('{0:.6f}'.format(rot))+'\n'
         text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))
+        c.stroke(path.circle(x, y, ro))
+        c.fill(path.circle(x, y, rin))
         #print x,',',y
 
-file = open('test.pat', 'w')
+c.writeEPSfile("path")
+c.writePDFfile("path")
+file = open('output.pat', 'w')
 file.write(text)
 file.close()
