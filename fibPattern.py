@@ -27,7 +27,7 @@ ppm = 47.157898         # Pixels per micron
 
 # For magnification: 3.5kX
 
-dim = 100               # Dimensions of scan window in um
+dim = 80               # Dimensions of scan window in um
 stepX = 10               # Distance between two columns in um
 stepY = 10               # Distance between two rows in um
 centerX = 0             # Center of rows
