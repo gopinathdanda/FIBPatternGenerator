@@ -29,16 +29,19 @@ ppm = 47.157898         # Pixels per micron
 
 dimX = 85               # Dimensions of scan window in x-dirn in um
 dimY = 75               # Dimensions of scan window in y-dirn in um
-borderX = 5.0             # Distance of array from x border in um
-borderY = 5.0             # Distance of array from y border in um
-stepX = (dimX-2*borderX)/(cols-1)   # Distance between two columns in um
-stepY = (dimY-2*borderY)/(rows-1)   # Distance between two rows in um
+borderX = 5.0           # Distance of array from x border in um
+borderY = 5.0           # Distance of array from y border in um
+stepX = stepY = 0
+if cols>1:
+    stepX = (dimX-2*borderX)/(cols-1)   # Distance between two columns in um
+if rows>1:
+    stepY = (dimY-2*borderY)/(rows-1)   # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
 
 c = canvas.canvas()
 c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))  # scan window
-c.stroke(path.rect(-dimX/2.0+borderX,-dimY/2.0+borderY,dimX-borderX*2,dimY-borderY*2))  # border
+c.stroke(path.rect(-dimX/2.0+borderX,-dimY/2.0+borderY,dimX-borderX*2,dimY-borderY*2), [style.linestyle.dashed])  # border
 i = 0
 text = '[Pattern_Summary]\nVersion=2.00\nPatterns='+str(nos)
 for row in range(0,rows):
