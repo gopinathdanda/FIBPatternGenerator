@@ -31,13 +31,28 @@ ppm = 47.157898         # Pixels per micron
 
 dimX = 85               # Dimensions of scan window in x-dirn in um
 dimY = 75               # Dimensions of scan window in y-dirn in um
-stepX = stepY = 0
-if cols>1:
-    stepX = (dimX-2*borderX)*1.0/(cols-1)   # Distance between two columns in um
-if rows>1:
-    stepY = (dimY-2*borderY)*1.0/(rows-1)   # Distance between two rows in um
 centerX = 0             # Center of rows
 centerY = 0             # Center of columns
+
+# Option to center or distribute pattern
+
+while 1:
+    centerDistribute = input('Please enter 1 to center and 2 to distribute pattern: ')
+    if centerDistribute == 1:
+        stepX = input('Enter pattern step size in x-direction in um: ')
+        stepY = input('Enter pattern step size in y-direction in um: ')
+        centerX = input('Enter x coordinate for center position in um: ')
+        centerY = input('Enter y coordinate for center position in um: ')
+        break
+    elif centerDistribute == 2:
+        stepX = stepY = 0
+        if cols>1:
+            stepX = (dimX-2*borderX)*1.0/(cols-1)   # Distance between two columns in um
+        if rows>1:
+            stepY = (dimY-2*borderY)*1.0/(rows-1)   # Distance between two rows in um
+        break
+    else:
+        centerDistribute = input('Please enter 1 to center and 2 to distribute pattern: ')
 
 c = canvas.canvas()
 c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))  # scan window
