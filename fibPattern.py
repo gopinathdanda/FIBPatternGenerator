@@ -54,6 +54,7 @@ while 1:
     else:
         centerDistribute = input('Please enter 1 to center and 2 to distribute pattern: ')
 
+outOfBounds = 0     # flag to monitor out of bounds pattern
 c = canvas.canvas()
 c.stroke(path.rect(-dimX/2.0,-dimY/2.0,dimX,dimY))  # scan window
 c.stroke(path.rect(-dimX/2.0+borderX,-dimY/2.0+borderY,dimX-borderX*2,dimY-borderY*2), [style.linestyle.dashed])  # border
@@ -83,11 +84,18 @@ for row in range(0,rows):
         text += 'EPD='+str(epd)+'\n'
         text += 'Rotation='+str('{0:.6f}'.format(rot))+'\n'
         text += 'PixelsPerMicron='+str('{0:.6f}'.format(ppm))
+        if x>(dimX-2*borderX)/2.0 or x<-(dimX-2*borderX)/2.0:
+            outOfBounds += 1
+        if y>(dimY-2*borderY)/2.0 or y<-(dimY-2*borderY)/2.0:
+            outOfBounds += 1
         c.fill(path.circle(x, y, ro), [color.rgb(0,0,0)])
         c.fill(path.circle(x, y, rin), [color.rgb(1,1,1)])
         #print x,',',y
 
 print '---------------------------------------------------'
+if outOfBounds > 0:
+    print 'WARNING:: PATTERN OUT OF BOUNDS!'
+    print '---------------------------------------------------'
 print 'Total time required = '+str(datetime.timedelta(seconds=time*nos))
 c.writeEPSfile("path")
 c.writePDFfile("path")
