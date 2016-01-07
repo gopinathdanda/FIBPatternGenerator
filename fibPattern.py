@@ -14,14 +14,16 @@ borderY = input('Enter border in y-direction in um: ')
 nos = rows*cols
 name = 'Circle'         # Circle pattern only (for now)
 rin = 0.000000          # in um
-ro = 0.200000           # in um
+ro = 0.500000           # in um
 patType = 7
 beam = 1                # 1=10pA
 matFile = 'C:\\xP\Pattern\si.mtr'
 depth = 0.100000
 dwell = 0.000001000     # in secs
 overlap = 50.000000
-time = 0.850000         # in secs: 0.85 for 100pA, 7.5 for 10pA @ 3.5kX
+# in secs: 0.85 for 100pA, 7.5 for 10pA @ 3.5kX for rin=0, ro=0.2
+# in secs: 1.00 for 3000pA @ 3.5kX for rin=0, ro=0.5 gives 1.2um diameter holes
+time = 1.000000          
 gis = 0
 epd = 0
 rot = 0.000000
